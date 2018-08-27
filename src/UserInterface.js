@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Overall UI component
 class UserInterface extends Component {
 	render() {
 		return(
@@ -19,8 +20,8 @@ class UserInterface extends Component {
 	}
 }
 
+// Smiley face UI component, resets game
 class SmileyUI extends Component {
-
 	render() {
 		return(
 			<div id="smiley-ui">
@@ -30,8 +31,8 @@ class SmileyUI extends Component {
 	}
 }
 
+// Simple UI component to keep track of life. Probably isn't necessary, but I'm keeping here incase I want to extend it. 
 class LifeUI extends Component {
-
 	render() {
 		return(
 			<div id="life-ui">

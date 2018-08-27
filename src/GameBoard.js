@@ -7,8 +7,6 @@ class GameBoard extends Component {
 		this.handleKeyDown = this.handleKeyDown.bind(this); 
 		this.moveChar = this.moveChar.bind(this);
 
-		
-
 		this.state = {
 			player : {
 				name: "player",
@@ -38,11 +36,6 @@ class GameBoard extends Component {
 		window.removeEventListener("keydown", this.handleKeyDown);
 		clearInterval(this.timer);
 		clearTimeout(this.state.invuln);
-	}
-
-	// Helper method to get a random int
-	getRndInt(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
 	}
 
 	// Generates a new level
@@ -156,6 +149,12 @@ class GameBoard extends Component {
 		return result;
 	}
 
+	// Helper method to get a random int
+	getRndInt(min, max) {
+		return Math.floor(Math.random() * (max - min) ) + min;
+		}
+	
+
 	// Handle's user keyboard inputs
 	handleKeyDown(e){
 		let player = this.state.player;
@@ -248,13 +247,13 @@ class GameBoard extends Component {
 	checkCollision(gameObj){
 		let curSq = this.state.board[gameObj.y][gameObj.x];
 		if (curSq.length > 1){
-			if (gameObj === this.state.player){
+			if (gameObj === this.state.player){						// Colliding with Exit
 				if (gameObj.x === this.state.exit.x && gameObj.y === this.state.exit.y){
 					this.props.addAir();
 					this.generateLevel();
 				}
-				for (let otherObj of curSq) {
-					if (otherObj.name === "collectable"){
+				for (let otherObj of curSq) {						
+					if (otherObj.name === "collectable"){			// Colliding with things to collect
 						let otherObjIndex = curSq.indexOf(otherObj);
 						curSq.splice(otherObjIndex, 1);
 						this.props.addPoints(100);
@@ -262,7 +261,7 @@ class GameBoard extends Component {
 							board: this.state.board,
 						})
 					}
-					if (otherObj.name === "enemy" && this.state.invuln == null){
+					if (otherObj.name === "enemy" && this.state.invuln == null){		//Colliding with enemies
 						this.setState({invuln: setTimeout(
 							this.clearInvuln.bind(this),
 							2000
@@ -309,6 +308,7 @@ class GameBoard extends Component {
 	}
 }
 
+// Simple tile object. Not sure if I want to extend this or not, leaving it here for now.
 class Tile extends Component {
 
 	render() {
@@ -321,6 +321,7 @@ class Tile extends Component {
 	}
 }
 
+// A simple game object "renderer". 
 class GameObject extends Component {
 
 	render(){

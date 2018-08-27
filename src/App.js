@@ -17,6 +17,7 @@ class App extends Component {
     }
   }
 
+  // Starts the game with preset settings
   startGame(){
     this.setState({
       gameState: "playing",
@@ -37,11 +38,12 @@ class App extends Component {
     this.setState({score: this.state.score + points});
   }
 
-  // Adds air
+  // Adds air to the air meter
   addAir(){
     this.setState({air: this.state.air + 8});
   }
 
+  // Decreasese the total air you have
   decreaseAir(){
     if (this.state.air -1 < 0){
       this.setState({gameState: "gameover"});
@@ -50,6 +52,7 @@ class App extends Component {
     this.setState({air: this.state.air - 1});
   }
 
+  // Decreases the life you have
   decreaseLife(){
     if (this.state.life - 1 < 0){
       this.setState({gameState: "gameover"});
@@ -91,8 +94,8 @@ class App extends Component {
   }
 }
 
+// Simple component that tells you when the game is over
 class GameOver extends Component {
-
   render(){
     return(
       <div id="game-over-screen">
@@ -104,8 +107,8 @@ class GameOver extends Component {
   }
 }
 
+// Tutorial component to teach you about the game
 class Tutorial extends Component {
-
   render(){
     return(
       <div id="tutorial-screen">
