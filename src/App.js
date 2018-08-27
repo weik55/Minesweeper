@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       gameState: "tutorial",
       level: 0,
-      playerLife: 3,
+      life: 3,
       score: 0,
       air: 15,
     }
@@ -21,9 +21,9 @@ class App extends Component {
     this.setState({
       gameState: "playing",
       level: 0,
-      playerLife: 3,
+      life: 3,
       score: 0,
-      air: 1000,
+      air: 15,
     })
 
     this.timer = setInterval(
@@ -50,12 +50,20 @@ class App extends Component {
     this.setState({air: this.state.air - 1});
   }
 
+  decreaseLife(){
+    if (this.state.life - 1 < 0){
+      this.setState({gameState: "gameover"});
+    }
+    this.setState({life: this.state.life - 1});
+  }
+
   render() {
     let board = <GameBoard 
       rows = {10}
       cols = {10}
       addPoints = {this.addPoints.bind(this)}
       addAir = {this.addAir.bind(this)}
+      decreaseLife = {this.decreaseLife.bind(this)}
     />
     if (this.state.gameState === "gameover"){
       board = <GameOver />
@@ -71,7 +79,7 @@ class App extends Component {
           <UserInterface 
             startGame = {this.startGame.bind(this)}
             gameState = {this.state.gameState}
-            playerLife = {this.state.playerLife}
+            playerLife = {this.state.life}
             score = {this.state.score}
             decreaseAir = {this.decreaseAir.bind(this)}
             air = {this.state.air}
@@ -127,6 +135,11 @@ class Tutorial extends Component {
             <div className="tile tile-empty inline">
               <div className="block"></div>
             </div> This is an unpassable block.
+          </li>
+          <li>
+            <div className="tile tile-empty inline">
+              <div className="enemy"></div>
+            </div> This is a hazard.
           </li>
         </ul>
       </div>

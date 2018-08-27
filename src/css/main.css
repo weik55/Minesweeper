@@ -156,12 +156,20 @@ textarea {
     background: lightskyblue;
     height: 100%;
     width: 100%;
+    z-index: 5;
 }
 
 .exit {
     background: #000;
     height: 100%;
     width: 100%;
+}
+
+.enemy {
+    background: red;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
 
 .block {
@@ -173,10 +181,11 @@ textarea {
 
 .collectable {
     background: green;
+    height: 20px;
     margin: auto;
-    margin-top: 7px;
-    height: 34px;
-    width: 34px;
+    margin-top: 14px;
+    width: 20px;
+    z-index: 0;
 }
 
 .tile-empty {
@@ -187,6 +196,7 @@ textarea {
     border: 1px solid #57412F;
     height: 48px;
     width: 48px;
+    overflow: hidden;
 }
 
 .inline {
