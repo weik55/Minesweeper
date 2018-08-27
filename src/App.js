@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import UserInterface from './UserInterface';
+import GameBoard from './GameBoard';
+//import logo from './logo.svg';
+import './css/main.css';
 
 class App extends Component {
+  constructor(props ){
+    super(props);
+
+    this.state = {
+      isPlaying: false,
+      playerLife: 3,
+    }
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+    return(
+      <div id="page">
+        <h1>Minesweeper <i className="far fa-smile-wink"></i></h1>
+        <div id="gameApp">
+          <UserInterface 
+            isPlaying = {this.state.isPlaying}
+            playerLife = {this.state.playerLife} 
+          />
+          <GameBoard 
+            isPlaying = {this.state.isPlaying}
+            rows = "10"
+            cols = "10"
+          />
+        </div>
       </div>
     );
   }
 }
+
 
 export default App;
