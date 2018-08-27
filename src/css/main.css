@@ -122,6 +122,27 @@ textarea {
     text-align: center;
 }
 
+#game-over-screen {
+    border: 1px solid #000;
+    height: 500px;
+    width: 100%;
+}
+
+#tutorial-list {
+    list-style-type: none;
+    text-align: left;
+    padding-left: 100px;
+}
+
+#tutorial-list li {
+    margin-top: 10px;
+}
+
+#game-over-text {
+    margin-top: 200px;
+}
+
+
 #game-board {
     border: 1px solid #000;
     width: 100%;
@@ -131,12 +152,49 @@ textarea {
     display: flex;
 }
 
+.player {
+    background: lightskyblue;
+    height: 100%;
+    width: 100%;
+}
+
+.exit {
+    background: #000;
+    height: 100%;
+    width: 100%;
+}
+
+.block {
+    background: #763931;
+    border: 7px solid #5A2729;
+    height: 34px;
+    width: 34px;
+}
+
+.collectable {
+    background: green;
+    margin: auto;
+    margin-top: 7px;
+    height: 34px;
+    width: 34px;
+}
+
+.tile-empty {
+    background: #AB9584;
+}
+
 .tile {
-    background: #eee;
-    border: 1px solid #555;
+    border: 1px solid #57412F;
     height: 48px;
     width: 48px;
 }
+
+.inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
 
 
 

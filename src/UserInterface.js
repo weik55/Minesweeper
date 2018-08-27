@@ -3,14 +3,30 @@ import React, { Component } from 'react';
 class UserInterface extends Component {
 	render() {
 		return(
-			<div id="user-interface-row">
-				<LifeUI playerLife = {this.props.playerLife}/>
-				<div id="smiley-ui">
-					<button type="button">:)</button>
+			<div>
+				<div id="score-row">
+					{`Score: ${this.props.score}`} 
 				</div>
-				<TimerUI />
+				<div id="user-interface-row">
+					<LifeUI playerLife = {this.props.playerLife}/>
+					<SmileyUI startGame = {this.props.startGame}/>
+					<div id="timer-ui">
+						{`Air: ${this.props.air}`}
+					</div>
+				</div>
 			</div>
 		);
+	}
+}
+
+class SmileyUI extends Component {
+
+	render() {
+		return(
+			<div id="smiley-ui">
+				<button type="button" onClick={this.props.startGame}>New Game <i className="far fa-smile"></i></button>
+			</div>
+		)
 	}
 }
 
@@ -19,42 +35,7 @@ class LifeUI extends Component {
 	render() {
 		return(
 			<div id="life-ui">
-				{this.props.playerLife}
-			</div>
-		);
-	}
-}
-
-class TimerUI extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			time: 0,
-		}
-	}
-
-	componentDidMount() {
-		this.timer = setInterval(
-			() => this.tick(),
-			1000
-		);
-	}
-
-	componentWillUnmount() {
-		clearInterval(this.timer);
-	}
-
-	tick() {
-		this.setState({
-			time: parseInt(this.state.time, 10) + 1
-		});
-	}
-
-	render() {
-		return(
-			<div id="timer-ui">
-				{this.state.time}
+				{`Life: ${this.props.playerLife}`}
 			</div>
 		)
 	}
